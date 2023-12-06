@@ -41,12 +41,17 @@ public class ComputationService extends Rates {
     /**
      * Display the payroll summary.
      */
-    public void displayPayroll() {
-        System.out.println("\n==================================================================");
-        System.out.println("\t\t\tPayroll Summary\t\t\t\t");
-        System.out.println("==================================================================\n");
-        System.out.println("Total Gross Pay: " + this.grossPay);
-        System.out.println("Total Tax: " + this.tax);
-        System.out.println("Total Net Pay: " + this.netPay);
+    public void displayPayroll(Employee employee) {
+    	System.out.println("\n==================================================================");
+    	System.out.println("\u001B[34m\u001B[1m\t\t\t    PAYROLL COMPUTATION v1.0\u001B[0m");
+    	System.out.println("==================================================================");
+    	System.out.println("\u001B[34m\u001B[1m\t\tEMPLOYEE INFORMATION\t\u001B[0m  |    \u001B[34m\u001B[1mPAYROLL SUMMARY\t\t\u001B[0m");
+    	System.out.println("==================================|==================================");
+    	System.out.println("\t\t\t\t  |");
+    	System.out.println("\t\u001B[1mName: \u001B[0m" + employee.getName() + "\t  |\u001B[1m    Gross Pay: ₱\u001B[0m" + this.grossPay);
+    	System.out.println("\t\u001B[1mCode: \u001B[0m" + employee.getCode() + "\t\t\t  |\u001B[1m    Total Tax: ₱\u001B[0m" + this.tax);
+    	System.out.println("\t\u001B[1mStatus: \u001B[0m" + employee.getTaxStatus() + " |\u001B[1m    Net Pay: ₱\u001B[0m" + this.netPay);
+    	System.out.println("\t\t\t\t  |");
+    	System.out.println("==================================================================\n\n\n");
     }
 }

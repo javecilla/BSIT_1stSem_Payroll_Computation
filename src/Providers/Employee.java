@@ -29,10 +29,10 @@ public class Employee {
      * @param scanner Scanner object for user input
      */
     private void obtainEmployeeName(Scanner scanner) {
-        System.out.print("\nEnter employee name: ");
+        System.out.print("\n\t\t\u001B[1mEnter employee name: \u001B[0m");
         String input = scanner.nextLine().trim();
         if (input.isEmpty()) {
-            System.out.println("Employee name is required!");
+            System.out.println("\t\tEmployee name is required!");
             obtainEmployeeName(scanner); // Recursive call to ensure valid input
         } else {
             this.name = input;
@@ -44,7 +44,7 @@ public class Employee {
      * @param scanner Scanner object for user input
      */
     private void obtainEmployeeCode(Scanner scanner) {
-        System.out.print("Employee code: ");
+    	System.out.print("\n\t\t\u001B[1mEnter employee code: \u001B[0m");
         this.code = scanner.nextLine().toUpperCase().trim();
         try {
             if (this.code.isEmpty()) {
@@ -57,7 +57,7 @@ public class Employee {
                 }
             }
         } catch (InvalidInputException | CodeNotFoundException e) {
-            System.out.println(e.getMessage());
+            System.out.println("\t\t"+e.getMessage() + "\n");
             obtainEmployeeCode(scanner); // Recursive call to ensure valid input
         }
     }
@@ -67,17 +67,17 @@ public class Employee {
      * @param scanner Scanner object for user input
      */
     private void obtainEmployeeStatus(Scanner scanner) {
-        System.out.println("[1] With Dependent\n[0] Without Dependent");
-        System.out.print("Choose your status: ");
+        System.out.println("\n\u001B[1m\t\t\t[1] With Dependent\n\t\t[0] Without Dependent");
+        System.out.print("\t\tChoose your status: \u001B[0m");
         this.taxStatus = scanner.nextLine().trim();
         try {
             if (this.taxStatus.isEmpty() || (!this.taxStatus.equals("1") && !this.taxStatus.equals("0"))) {
-                throw new InvalidInputException("Invalid dependent status! Please enter valid status.");
+                throw new InvalidInputException("\t\tInvalid dependent status!");
             } else {
                 this.taxStatus = (this.taxStatus.equals("1")) ? "With Dependent" : "Without Dependent";
             }
         } catch (InvalidInputException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + "\n");
             obtainEmployeeStatus(scanner); // Recursive call to ensure valid input
         }
     }
@@ -87,14 +87,14 @@ public class Employee {
      */
     private void obtainHoursOfWork(Scanner scanner) {
         try {
-            System.out.print("Enter hours of work: ");
+        	System.out.print("\n\t\t\u001B[1mEnter hours of work: \u001B[0m");
             String input = scanner.nextLine().trim();
             this.hoursOfWork = Integer.parseInt(input);
             if (this.hoursOfWork <= 0) {
-                throw new InvalidInputException("Invalid hours of work! Cannot be negative or zero.");
+                throw new InvalidInputException("Invalid hours of work!");
             }
         } catch (NumberFormatException | InvalidInputException e) {
-            System.out.println("Invalid input! Please enter a valid integer for hours of work.");
+            System.out.println("\t\tInvalid hours of work!");
             obtainHoursOfWork(scanner); // Recursive call to ensure valid input
         }
     }
@@ -103,15 +103,8 @@ public class Employee {
      * Retrieves the employee code.
      * @return Employee code
      */
-    public void displayEmployeeInfo() {
-        System.out.println("\n==================================================================");
-        System.out.println("\t\t\tPayrol Computation\t\t\t\t");
-        System.out.println("\t\t\tDecember 02, 2023\t\t\t\t");
-        System.out.println("==================================================================");
-        System.out.println("\nEmployee Information:");
-        System.out.println("Name: " + this.name);
-        System.out.println("Code: " + this.code);
-        System.out.println("Status: " + this.taxStatus);
+    public String getName() {
+        return this.name;
     }
     
     /**

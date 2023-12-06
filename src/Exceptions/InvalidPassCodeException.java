@@ -5,13 +5,13 @@ package Exceptions;
  * Signals that the provided credentials are invalid.
  */
 @SuppressWarnings("serial")
-public class InvalidCredentialsException extends Exception {
+public class InvalidPassCodeException extends Exception {
 	/**
-     * Constructs an InvalidCredentialsException with a specified error message.
+     * Constructs an InvalidPassCodeException with a specified error message.
      *
      * @param message The error message describing the exception.
      */
-    public InvalidCredentialsException(String message) {
+    public InvalidPassCodeException(String message) {
         super(message);
     }
 }
